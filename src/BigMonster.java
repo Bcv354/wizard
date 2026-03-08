@@ -21,9 +21,6 @@ public class BigMonster extends Monster {
         System.out.println(">>> БИТВА С BIG MONSTER! (Большой монстр) <<<");
         System.out.println("Решите задачу:");
 
-        // Убрали проверку if (difficultGame == 1), чтобы избежать ошибок и рекурсии
-        // Теперь просто генерируем пример в зависимости от сложности
-
         int x = r.nextInt(10 * (difficultGame - 1), 10 * difficultGame);
         int y = r.nextInt(10 * (difficultGame - 1), 10 * difficultGame);
         int z = r.nextInt(100 * (difficultGame - 1), 100 * difficultGame);
@@ -33,14 +30,32 @@ public class BigMonster extends Monster {
         Scanner sc = new Scanner(System.in);
         int ans = sc.nextInt();
 
-        if (trueAnswer == ans) {
-            System.out.println("Ты победил меня! Мои братья отомстят тебе!!!");
+        if (trueAnswer != ans) {
+            System.out.println("Ты проиграл! В калькуляторе забанили?");
+            return false;
+        }
+
+        System.out.println("Ты победил меня! Ухожу плакать в подушку");
+
+        // === ВОПРОС С ПОДВОХОМ (10% ШАНС) ===
+        if (r.nextInt(100) < 10) {
+            System.out.println("\nБУГАГАШЕНЬКИ!НЕ ОТВЕТИШЬ УМРЕШЬ!!!!");
+            System.out.println("У ежика 6 иголок бежа он потерял 1.Сколько домов было у Гуси которая живет у бабушки?)");
+            System.out.print("Введи ответ: ");
+
+            // Считываем любой ответ (он не влияет на результат)
+            if (sc.hasNextInt()) {
+                sc.nextInt();
+            } else {
+                sc.next();
+            }
+
+            System.out.println("Ха-ха-ха.Видел бы ты свое лицо.Иди пока пропускаю");
             return true;
         }
-        System.out.println("Ты проиграл эту битву! Я даже не напрягся.");
-        return false;
-    }
 
-    // Метод taskMonster() без параметров лучше удалить, так как он больше не нужен
-    // и вызывает конфликт сигнатур.
+
+        return true;
+    }
 }
+

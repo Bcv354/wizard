@@ -30,11 +30,11 @@ public class SmallMonster extends Monster{
         int ans = sc.nextInt();
 
         if (ans == otv) {
-            System.out.println("Верно! Первый этап пройден.");
+            System.out.println("Ладно проходи");
 
             // === ШАНС 30% НА БОНУСНЫЙ ВОПРОС ===
             if (r.nextInt(100) < 30) {
-                System.out.println("Так просто не сдамся!!! Бонусный вопрос!");
+                System.out.println("Так просто не сдамся!!! АВТОМОБИЛЬ В СТУДИЮ!");
                 int randomAdd = r.nextInt(1, 20);
                 System.out.println("Прибавь " + randomAdd + " к " + ans);
 
@@ -44,19 +44,18 @@ public class SmallMonster extends Monster{
                 if (bonusAns == correctBonus) {
                     System.out.println("Отлично! Ты победил монстра с сильной решимостью!");
 
-                    // === ВОССТАНОВЛЕНИЕ ЖИЗНИ ===
+                    // Ответ на бонус
                     if (person.getLive() < 3) {
                         person.upLive();
-                        System.out.println("За победу над бонусным вопросом я дарю тебе дополнительную жизнь!");
-                        System.out.println("Теперь у тебя жизней: " + person.getLive());
+                        System.out.println("Ой ой ой!Не ожидал что сможешь.Дарю жизнь так уж и быть");
                     } else {
-                        System.out.println("У тебя максимальное количество жизней (3).");
+                        System.out.println("А немнога ли?3 жизней тебе хватит");
                     }
-                    // ============================
+
 
                     return true;
                 } else {
-                    System.out.println("Неверно! Ты проиграл эту битву!");
+                    System.out.println("Неа.Не все так просто!");
                     return false;
                 }
             }
@@ -66,7 +65,7 @@ public class SmallMonster extends Monster{
             return true;
         }
 
-        System.out.println("Ты проиграл эту битву!");
+        System.out.println("Бугагашеньки!Ты не смог посчитать всего немножко.");
         return false;
     }
 

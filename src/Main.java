@@ -5,7 +5,10 @@ public class Main {
     public static void main(String[] args) {
 
         String castle = "\uD83C\uDFF0";
+        String wall = "\uD83E\uDDB1";
         int sizeBoard = 5;
+
+
 
         Person person = new Person(sizeBoard);
 
@@ -52,7 +55,19 @@ public class Main {
 
         board[castleY][castleX] = castle;
 
-        System.out.println("Привет! Ты готов начать играть в игру? (Напиши: ДА или НЕТ)");
+        int wallCount = 3;
+        int w = 0;
+        while (w < wallCount) {
+            int wx = r.nextInt(sizeBoard);
+            int wy = r.nextInt(sizeBoard);
+            // Ставим стену, только если клетка пустая и это не старт игрока
+            if (board[wy][wx].equals("  ") && !(wx == person.getX() - 1 && wy == person.getY() - 1)) {
+                board[wy][wx] = wall;
+                w++;
+            }
+        }
+
+        System.out.println("Привет! Ты готов начать играть в игру? (Напиши: ДА(YES) или НЕТ(NO))");
 
         Scanner sc = new Scanner(System.in);
         String answer = sc.nextLine();
@@ -62,7 +77,7 @@ public class Main {
 
 
         switch (answer) {
-            case "ДА" -> {
+            case "ДА","YES" -> {
                 System.out.println("Выбери сложность игры(от 1 до 5):");
                 int difficultGame = sc.nextInt();
                 System.out.println("Выбранная сложность:\t" + difficultGame);
@@ -86,6 +101,8 @@ public class Main {
                         } else if (next.equals(castle)) {
                             System.out.println("Вы прошли игру!");
                             break;
+                        } else if (next.equals(wall)) {
+                            System.out.println("⛔ ХА-ХА-ХА!Ты врезался попробуй обойти.");
                         }else {
                             for (Monster monster : arrMonster) {
                                 if (monster.conflictPerson(x, y)) {
@@ -109,7 +126,7 @@ public class Main {
                     }
                 }
             }
-            case "НЕТ" -> System.out.println("Жаль, приходи еще!");
+            case "НЕТ","NO" -> System.out.println("Жаль, приходи еще!");
             default -> System.out.println("Данные введены неккоректно");
         }
 

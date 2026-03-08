@@ -45,10 +45,10 @@ public class Monster {
         int ans = sc.nextInt();
 
         if (trueAnswer == ans) {
-            System.out.println("Верно! Ты победил монстра, но его друзья жаждут мести");
+            System.out.println("Верно! Ты победил...");
             return true;
         }
-        System.out.println("Ты проиграл эту битву!");
+        System.out.println("Ты проиграл ахахаха!Мой тостер посчитал правильней чем ты!");
         return false;
     }
 }
