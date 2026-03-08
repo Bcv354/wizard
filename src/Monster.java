@@ -31,16 +31,21 @@ public class Monster {
         this.image = image;
     }
 
-    public boolean taskMonster(int difficultGame){
+    // === ИСПРАВЛЕНО: Добавлен параметр Person person ===
+    public boolean taskMonster(int difficultGame, Person person) {
+        System.out.println(">>> ТЫ ВСТРЕТИЛ ORDINARY MONSTER! (Обычный монстр) <<<");
         System.out.println("Решите задачу:");
+
         int x = r.nextInt(200);
         int y = r.nextInt(200);
         int trueAnswer = x + y;
+
         System.out.println("Реши пример: " + x + " + " + y + " = ?");
         Scanner sc = new Scanner(System.in);
         int ans = sc.nextInt();
+
         if (trueAnswer == ans) {
-            System.out.println("Верно! Ты победил монстра");
+            System.out.println("Верно! Ты победил монстра, но его друзья жаждут мести");
             return true;
         }
         System.out.println("Ты проиграл эту битву!");

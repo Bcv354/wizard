@@ -28,15 +28,20 @@ public class Main {
         int count = 0;
         Monster test;
         while (count <= countMonster){
-            if (r.nextBoolean()) {
+            int type = r.nextInt(3);
+
+            if (type == 0) {
                 test = new Monster(sizeBoard);
-            }else {
+            } else if (type == 1) {
+                test = new SmallMonster(sizeBoard);
+            } else {
                 test = new BigMonster(sizeBoard);
             }
-            if (board[test.getY()][test.getX()].equals("  ")){
+
+            if (board[test.getY()][test.getX()].equals("  ")) {
                 board[test.getY()][test.getX()] = test.getImage();
                 arrMonster[count] = test;
-                count++;
+                count++; // Увеличиваем счетчик только если монстр успешно поставлен
             }
 
         }
@@ -84,12 +89,16 @@ public class Main {
                         }else {
                             for (Monster monster : arrMonster) {
                                 if (monster.conflictPerson(x, y)) {
-                                    if (monster.taskMonster(difficultGame)) {
+                                    if (monster.taskMonster(difficultGame,person)) {
                                         board[person.getY() - 1][person.getX() - 1] = "  ";
                                         person.move(x, y);
 
                                     } else {
                                         person.downLive();
+
+                                    }if (person.getLive() <= 0){
+                                        System.out.println("И все же ты не смог... Никаких 2 шансов тебе не будет.");
+                                        return;
                                     }
                                     break;
                                 }

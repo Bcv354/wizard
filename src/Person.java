@@ -52,7 +52,12 @@ public class Person {
         this.y = y;
     }
 
+
     public void downLive(){
         live--;
+    }
+
+    public void upLive(){
+        live++;
     }
 }
